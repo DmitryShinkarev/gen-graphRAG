@@ -1,0 +1,303 @@
+# Universal Continue.dev ignore file
+# Excludes all problematic files that cause ByteString errors
+
+# =============================================================================
+# BINARY AND COMPILED FILES (Major cause of ByteString errors)
+# =============================================================================
+
+# Java compiled files
+*.class
+*.jar
+*.war
+*.ear
+*.aar
+*.apk
+*.dex
+
+# Python compiled files
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.pyd
+
+# C/C++ compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Other binary files
+*.bin
+*.dat
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+
+# =============================================================================
+# ARCHIVE AND COMPRESSED FILES
+# =============================================================================
+
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.gz
+*.bz2
+*.xz
+
+# =============================================================================
+# CACHE AND TEMPORARY DIRECTORIES
+# =============================================================================
+
+# Java build directories
+**/target/
+**/build/
+**/out/
+**/bin/
+**/obj/
+**/classes/
+**/generated/
+**/compiled/
+
+# Python cache
+**/__pycache__/
+**/.pytest_cache/
+**/venv/
+**/env/
+**/.venv/
+**/ENV/
+
+# Node.js cache
+**/node_modules/
+**/.npm/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# IDE cache
+**/.idea/
+**/.vscode/
+**/.eclipse/
+**/.metadata/
+**/bin/
+**/out/
+
+# =============================================================================
+# VERSION CONTROL AND BACKUP FILES
+# =============================================================================
+
+**/.git/
+**/.svn/
+**/.hg/
+**/.bzr/
+**/*.backup
+**/*.bak
+**/*~
+**/*.orig
+**/*.rej
+**/*.swp
+**/*.swo
+**/*.tmp
+
+# =============================================================================
+# LOG AND TEMPORARY FILES
+# =============================================================================
+
+**/*.log
+**/logs/
+**/log/
+**/tmp/
+**/temp/
+**/temporary/
+**/.DS_Store
+**/Thumbs.db
+**/desktop.ini
+
+# =============================================================================
+# LARGE DATA FILES
+# =============================================================================
+
+# Database dumps
+**/*.sql
+**/*.dump
+**/*.backup
+
+# Media files
+**/*.jpg
+**/*.jpeg
+**/*.png
+**/*.gif
+**/*.bmp
+**/*.tiff
+**/*.ico
+**/*.svg
+**/*.mp3
+**/*.mp4
+**/*.avi
+**/*.mov
+**/*.wav
+**/*.flac
+
+# Documents
+**/*.pdf
+**/*.doc
+**/*.docx
+**/*.xls
+**/*.xlsx
+**/*.ppt
+**/*.pptx
+
+# =============================================================================
+# CONFIGURATION AND LOCK FILES
+# =============================================================================
+
+# Package manager lock files
+**/package-lock.json
+**/yarn.lock
+**/Pipfile.lock
+**/poetry.lock
+**/composer.lock
+
+# IDE configuration
+**/.cursor/
+**/.vscode/settings.json
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/dictionaries/
+**/.idea/shelf/
+
+# =============================================================================
+# TEST AND COVERAGE REPORTS
+# =============================================================================
+
+**/coverage/
+**/.coverage
+**/htmlcov/
+**/test-results/
+**/junit.xml
+**/test-report.html
+**/jacoco/
+**/surefire-reports/
+
+# =============================================================================
+# DOCKER AND CONTAINER FILES
+# =============================================================================
+
+**/Dockerfile*
+**/docker-compose*
+**/.dockerignore
+**/docker-compose.override.yml
+
+# =============================================================================
+# SPECIFIC PROBLEMATIC EXTENSIONS
+# =============================================================================
+
+# Executable scripts
+**/*.sh
+**/*.bat
+**/*.cmd
+**/*.ps1
+
+# Font files
+**/*.ttf
+**/*.otf
+**/*.woff
+**/*.woff2
+
+# Certificate files
+**/*.pem
+**/*.key
+**/*.crt
+**/*.p12
+**/*.jks
+
+# =============================================================================
+# LARGE GENERATED FILES
+# =============================================================================
+
+# Generated code
+**/generated/
+**/gen/
+**/auto/
+**/build/generated/
+
+# Documentation builds
+**/docs/build/
+**/_site/
+**/site/
+
+# =============================================================================
+# ENVIRONMENT AND SECRET FILES
+# =============================================================================
+
+**/.env
+**/.env.local
+**/.env.production
+**/.env.development
+**/secrets/
+**/.secrets/
+**/*.secret
+**/*.key
+
+# =============================================================================
+# OS SPECIFIC FILES
+# =============================================================================
+
+# macOS
+**/.DS_Store
+**/.AppleDouble
+**/.LSOverride
+**/Icon
+**/._*
+
+# Windows
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+**/$RECYCLE.BIN/
+
+# Linux
+**/.directory
+**/.Trash-*
+**/.nfs*
+
+# =============================================================================
+# PROJECT SPECIFIC EXCLUSIONS
+# =============================================================================
+
+# Our project specific
+**/docs/
+**/config/
+**/monitoring/
+**/examples_backup/
+**/docs_backup/
+**/config_backup/
+
+# Files with potential encoding issues
+**/*_RU.md
+**/*_ru.md
+**/*_RU.txt
+**/*_ru.txt
+**/README_RU.*
+**/CONTINUE_*.md
+**/LAUNCH_INSTRUCTIONS.*
+**/ЗАПУСК.*
+
+# =============================================================================
+# SIZE LIMITS (files larger than 1MB)
+# =============================================================================
+
+# Note: Continue.dev should handle large files, but we exclude obviously large ones
+**/*.dump
+**/*.backup
+**/*.archive

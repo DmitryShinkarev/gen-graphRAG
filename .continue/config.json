@@ -1,0 +1,129 @@
+{
+  "models": [
+    {
+      "title": "GPT-4",
+      "provider": "openai",
+      "model": "gpt-4",
+      "apiKey": "your-openai-api-key-here"
+    },
+    {
+      "title": "GPT-4o-mini",
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "apiKey": "your-openai-api-key-here"
+    }
+  ],
+  "customCommands": [
+    {
+      "name": "java-test",
+      "description": "Generate JUnit test for Java method",
+      "prompt": "Generate a comprehensive JUnit 5 test for the selected Java method. Include:\n- @Test, @BeforeEach, @AfterEach annotations\n- Edge cases and boundary conditions\n- Null checks and exception handling with assertThrows\n- Mock objects using Mockito if needed\n- Clear test method names following shouldXxxWhenYyy pattern\n- Proper assertions with messages\n- @DisplayName annotations for better readability\n\n{{{ input }}}"
+    },
+    {
+      "name": "test-rag",
+      "description": "Generate test with RAG",
+      "prompt": "Extract method name and class from:\n{{{ input }}}\n\nThen execute:\ncurl -X POST http://localhost:8000/api/generate/test -H 'Content-Type: application/json' -d '{\"target_method\": \"METHOD\", \"class_name\": \"CLASS\"}' | jq '.test_code'"
+    },
+    {
+      "name": "explain-java",
+      "description": "Explain Java code structure and dependencies",
+      "prompt": "Analyze and explain the selected Java code:\n- What it does and its purpose\n- Input parameters and their purpose\n- Return value and type\n- Dependencies on other classes/methods\n- Possible edge cases and error conditions\n- Complexity analysis (time/space)\n- Testing recommendations\n- Potential improvements\n\n{{{ input }}}"
+    },
+    {
+      "name": "refactor-java",
+      "description": "Suggest refactoring improvements for Java code",
+      "prompt": "Analyze the selected Java code and suggest refactoring improvements:\n- Code smell detection\n- Performance optimizations\n- Readability improvements\n- SOLID principles compliance\n- Design pattern suggestions\n- Method extraction opportunities\n- Variable naming improvements\n- Documentation suggestions\n\n{{{ input }}}"
+    },
+    {
+      "name": "debug-java",
+      "description": "Help debug Java code issues",
+      "prompt": "Help debug the selected Java code:\n- Identify potential bugs\n- Suggest debugging strategies\n- Recommend logging improvements\n- Error handling analysis\n- Performance bottleneck detection\n- Memory leak prevention\n- Thread safety considerations\n- Best practices for debugging\n\n{{{ input }}}"
+    },
+    {
+      "name": "index",
+      "description": "Index Java project (usage: @index /path/to/project OR @index . for current dir)",
+      "prompt": "🚀 Indexing Java project: {{{ input }}}\n\nExecuting indexing with auto-cleanup...\n\n```bash\n/Users/dsh/continue-unit-test-java/scripts/index_project.sh \"{{{ input }}}\"\n```\n\nThis will:\n1. 🗑️ Auto-clear all databases (Memgraph, Qdrant, Redis)\n2. 📂 Scan and parse all Java files  \n3. 🔗 Build code relationship graph\n4. 🧮 Generate semantic embeddings\n5. 💾 Store vectors in Qdrant\n\nRun this command now!"
+    },
+    {
+      "name": "index-here",
+      "description": "Index current workspace directory",
+      "prompt": "🚀 Indexing current workspace...\n\n```bash\n/Users/dsh/continue-unit-test-java/scripts/index_project.sh .\n```\n\nThis will index the current directory with auto-cleanup. Run now!"
+    },
+    {
+      "name": "index-stats",
+      "description": "Show indexing statistics",
+      "prompt": "Please check the current indexing statistics by running:\n\n```bash\ncurl http://localhost:8000/api/stats\n```\n\nShow me the results and explain what they mean."
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "share",
+      "description": "Export the current chat session to markdown"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    },
+    {
+      "name": "commit",
+      "description": "Generate a git commit message"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "code",
+      "params": {
+        "maxFiles": 10,
+        "maxLines": 1000,
+        "exclude": [
+          "**/*.class",
+          "**/*.jar",
+          "**/*.war",
+          "**/target/**",
+          "**/build/**",
+          "**/node_modules/**",
+          "**/__pycache__/**",
+          "**/.git/**",
+          "**/*.log",
+          "**/*.tmp"
+        ]
+      }
+    },
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "terminal",
+      "params": {}
+    },
+    {
+      "name": "problems",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {
+        "maxFiles": 20
+      }
+    }
+  ],
+  "allowAnonymousTelemetry": false,
+  "disableIndexing": false,
+  "embeddingsProvider": {
+    "provider": "openai",
+    "model": "text-embedding-3-small"
+  },
+  "composer": {
+    "enabled": true,
+    "model": "gpt-4o-mini"
+  },
+  "tabAutocomplete": {
+    "enabled": true,
+    "model": "gpt-4o-mini"
+  }
+}

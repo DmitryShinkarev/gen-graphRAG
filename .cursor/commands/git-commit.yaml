@@ -1,0 +1,11 @@
+name: git_commit
+description: Добавить, закоммитить и залить изменения
+command: |
+  git add .
+  git commit -m "{{message}}"
+  git push
+args:
+  - name: message
+    type: string
+    description: Сообщение коммита
+    required: true

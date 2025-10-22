@@ -1,0 +1,68 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'java-agent-monitor'
+    environment: 'development'
+
+# Alertmanager configuration (optional)
+# alerting:
+#   alertmanagers:
+#     - static_configs:
+#         - targets: ['alertmanager:9093']
+
+# Load rules once and periodically evaluate them
+# rule_files:
+#   - "alerts/*.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          service: 'prometheus'
+
+  # Python API metrics
+  - job_name: 'python-api'
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['python-api:8000']
+        labels:
+          service: 'python-api'
+          component: 'backend'
+    # Enable when python-api is running
+    # Uncomment the line below when ready
+    # relabel_configs:
+    #   - source_labels: [__address__]
+    #     target_label: instance
+
+  # Qdrant metrics
+  - job_name: 'qdrant'
+    metrics_path: '/metrics'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['qdrant:6333']
+        labels:
+          service: 'qdrant'
+          component: 'vector-db'
+
+  # Redis metrics (via redis_exporter if added)
+  # - job_name: 'redis'
+  #   static_configs:
+  #     - targets: ['redis-exporter:9121']
+  #       labels:
+  #         service: 'redis'
+  #         component: 'cache'
+
+  # Memgraph metrics
+  - job_name: 'memgraph'
+    scrape_interval: 30s
+    static_configs:
+      - targets: ['memgraph:7444']
+        labels:
+          service: 'memgraph'
+          component: 'graph-db'
+
